@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Show Parking Details</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <center>
+        <h1 class="mb-4">Parking Details</h1>
+    </center>
+
+    <div class="table-container">
+
+        <table class="table table-bordered table-hover mb-0">
+
+            <thead>
+
+                <tr>
+                    <th>Parking ID</th>
+                    <th>Vehicle Type</th>
+                    <th>Vehicle Number</th>
+                    <th>Owner Name</th>
+                    <th>Parked Hours</th>
+                    <th>Paid Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for i in obj %}
+
+                <tr>
+
+                    <td>{{ i.Pid }}</td>
+                    <td>{{ i.Vehicle_type }}</td>
+                    <td>{{ i.Vehicle_number }}</td>
+                    <td>{{ i.owner_name }}</td>
+                    <td>{{ i.parked_hours }}</td>
+                    <td>{{ i.paid_amount }}</td>
+                    <td>{{ i.status }}</td>
+
+                    <td>
+
+                        <a href="{% url 'update_url' i.Pid %}" class="btn btn-warning btn-sm">
+                            Update
+                        </a>
+
+                        <a href="{% url 'delete_url' i.Pid %}" class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="8" class="text-center">
+                        No Records Found
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

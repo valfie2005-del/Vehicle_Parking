@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Add Vehicle</title>
+{% endblock %}
+
+{% block content %}
+
+<center>
+    <h1 class="mt-4">Parking Form</h1>
+</center>
+
+<div class="container">
+
+    <form method="post" class="jumbotron">
+
+        {% csrf_token %}
+
+        {{ form|crispy }}
+
+        <center>
+            <input type="submit" value="Submit" class="btn btn-success">
+        </center>
+
+    </form>
+
+</div>
+
+{% endblock %}
